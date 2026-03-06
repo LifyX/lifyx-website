@@ -37,16 +37,9 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/.ssh
-          cat > ~/.ssh/deploy_key.pem <<'EOF'
-          ${{ secrets.EC2_SSH_KEY }}
-          EOF
+          printf "%s" "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key.pem
           chmod 600 ~/.ssh/deploy_key.pem
           ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        shell: bash
-        run: |
-          ssh -o StrictHostKeyChecking=yes -i ~/.ssh/deploy_key.pem "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" "echo SSH OK"
 
       - name: Prepare remote temp directory
         shell: bash
