@@ -1,0 +1,60 @@
+name: Deploy LifyX
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Configure SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf "%s" "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key.pem
+          chmod 600 ~/.ssh/deploy_key.pem
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Prepare remote temp directory
+        run: |
+          ssh -i ~/.ssh/deploy_key.pem "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" \
+          "mkdir -p /tmp/lifyx && rm -rf /tmp/lifyx/*"
+
+      - name: Upload build files
+        run: |
+          scp -i ~/.ssh/deploy_key.pem -r dist/* \
+          "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/tmp/lifyx/"
+
+      - name: Deploy on server
+        run: |
+          ssh -i ~/.ssh/deploy_key.pem "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" \
+          "sudo mkdir -p /var/www/lifyx && \
+           sudo rm -rf /var/www/lifyx/* && \
+           sudo cp -r /tmp/lifyx/* /var/www/lifyx/ && \
+           sudo chown -R nginx:nginx /var/www/lifyx && \
+           sudo find /var/www/lifyx -type d -exec chmod 755 {} \; && \
+           sudo find /var/www/lifyx -type f -exec chmod 644 {} \; && \
+           sudo nginx -t && \
+           sudo systemctl reload nginx"
+
+      - name: Verify deployed site
+        run: |
+          curl -Ik "${{ secrets.SITE_URL }}"
