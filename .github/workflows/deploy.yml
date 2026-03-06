@@ -26,12 +26,23 @@ jobs:
       - name: Build production site
         run: npm run build
 
+      - name: Validate required secrets
+        run: |
+          [ -n "${{ secrets.EC2_HOST }}" ] || { echo "EC2_HOST is missing"; exit 1; }
+          [ -n "${{ secrets.EC2_USER }}" ] || { echo "EC2_USER is missing"; exit 1; }
+          [ -n "${{ secrets.EC2_SSH_KEY }}" ] || { echo "EC2_SSH_KEY is missing"; exit 1; }
+          [ -n "${{ secrets.SITE_URL }}" ] || { echo "SITE_URL is missing"; exit 1; }
+
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
-          printf "%s" "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key.pem
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key.pem
           chmod 600 ~/.ssh/deploy_key.pem
           ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        run: |
+          ssh -i ~/.ssh/deploy_key.pem "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" "echo SSH OK"
 
       - name: Prepare remote temp directory
         run: |
