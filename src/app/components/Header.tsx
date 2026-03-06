@@ -59,7 +59,7 @@ export function Header() {
   };
 
   const languageLabels = {
-    en: 'ENNnNn',
+    en: 'EN',
     fr: 'FR',
     es: 'ES',
   };
