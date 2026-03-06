@@ -29,7 +29,12 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem(storageKey);
-    return (storedTheme as Theme) || defaultTheme;
+    const resolved = (storedTheme as Theme) || defaultTheme;
+    // Apply theme class synchronously before first paint to prevent flash
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(resolved);
+    return resolved;
   });
 
   useEffect(() => {

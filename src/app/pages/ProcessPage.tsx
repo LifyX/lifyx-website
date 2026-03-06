@@ -34,7 +34,7 @@ export function ProcessPage() {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden selection:bg-primary/30 selection:text-foreground" style={{ position: 'relative' }}>
       {/* Background Ambience */}
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none" style={{ position: 'fixed' }}>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10 opacity-50" />
       </div>
 
@@ -65,10 +65,7 @@ export function ProcessPage() {
       </header>
 
       {/* Timeline Section */}
-      <section className="pb-24 md:pb-40 px-6 relative" style={{ position: 'relative' }}>
-        {/* Scroll Trigger Wrapper */}
-        <div ref={containerRef} className="absolute inset-0 pointer-events-none" style={{ position: 'absolute' }} />
-        
+      <section ref={containerRef} className="pb-24 md:pb-40 px-6 relative" style={{ position: 'relative' }}>
         <div className="max-w-[1200px] mx-auto relative">
           
           {/* Vertical Lines */}

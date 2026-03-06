@@ -1,45 +1,56 @@
 @custom-variant dark (&:is(.dark *));
 
+/* Prevent white flash: default html to dark before JS applies theme class */
+html {
+  background-color: #111315;
+  color-scheme: dark;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+html.light {
+  background-color: #F7F8F9;
+  color-scheme: light;
+}
+
 :root {
-  /* Light Theme - Refined Depth & Layering */
+  /* Light Theme - Neutral, Architectural, Engineered */
   --font-size: 16px;
   
-  /* Backgrounds - Layered Depth */
-  --background: #C4DDE6; /* Light blue background */
-  --card: #D9E9EF;       /* Slightly lighter blue for cards */
-  --popover: #D9E9EF;
-  --sidebar: #D9E9EF;
+  /* Backgrounds - Lighter Neutral Tone */
+  --background: #F7F8F9;
+  --card: #EDEEF0;
+  --popover: #EDEEF0;
+  --sidebar: #EDEEF0;
   
-  /* Text - High Contrast */
-  --foreground: #09090B;
-  --card-foreground: #09090B;
-  --popover-foreground: #09090B;
-  --sidebar-foreground: #52525B;
+  /* Text - High Contrast, Dark Grays */
+  --foreground: #141414;
+  --card-foreground: #141414;
+  --popover-foreground: #141414;
+  --sidebar-foreground: #4B4B4B;
   
   /* Muted / Secondary - Subtle Separation */
-  --muted: #A8C5D1;      /* Muted blue */
-  --muted-foreground: #4B5563; /* Darker grey for better readability */
+  --muted: #E2E3E5;
+  --muted-foreground: #2A2A2A;
   
-  --secondary: #A8C5D1;  /* Match muted */
+  --secondary: #E2E3E5;
   --secondary-foreground: #111827;
   
-  --accent: #A8C5D1;
+  --accent: #E2E3E5;
   --accent-foreground: #111827;
   
-  --sidebar-accent: #C4DDE6;
+  --sidebar-accent: #F7F8F9;
   --sidebar-accent-foreground: #111827;
 
-  /* Primary Brand Color */
+  /* Primary Brand Color — same as dark mode, no opacity reduction */
   --primary: #63C455;
   --primary-foreground: #FFFFFF;
   --sidebar-primary: #63C455;
   --sidebar-primary-foreground: #FFFFFF;
 
-  /* Borders & Inputs */
-  --border: #9BBDCA; /* Blue-tinted border */
-  --input: #B5D4DF;
-  --input-background: #D2E5EC; /* Light blue input background */
-  --sidebar-border: #B5D4DF;
+  /* Borders & Inputs - Neutral */
+  --border: #D5D6D8;
+  --input: #DDDEE0;
+  --input-background: #EAEBEC;
+  --sidebar-border: #D5D6D8;
   
   /* UI Elements */
   --ring: #63C455;
@@ -47,7 +58,7 @@
   --radius: 0.625rem;
   
   /* Status Colors */
-  --destructive: #EF4444; /* Red 500 */
+  --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   
   /* Charts */
@@ -58,7 +69,7 @@
   --chart-5: #85E078;
   
   /* Other */
-  --switch-background: #B5D4DF;
+  --switch-background: #D4D5D7;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
 }
@@ -159,10 +170,11 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, fill 300ms ease, stroke 300ms ease;
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300 font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   /* Typography System */
@@ -171,13 +183,24 @@
     line-height: 1.1;
   }
 
+  /* Light mode: slightly heavier headlines for stronger contrast */
+  :root h1, :root h2 {
+    font-weight: 900;
+  }
+  .dark h1 {
+    font-weight: 900;
+  }
+  .dark h2 {
+    font-weight: 700;
+  }
+
   h1 {
-    @apply font-black text-5xl md:text-6xl lg:text-7xl; /* Satoshi Black */
+    @apply text-5xl md:text-6xl lg:text-7xl;
     letter-spacing: -0.02em;
   }
 
   h2 {
-    @apply font-bold text-3xl md:text-4xl lg:text-5xl; /* Satoshi Bold */
+    @apply text-3xl md:text-4xl lg:text-5xl;
     letter-spacing: -0.01em;
   }
 

@@ -9,6 +9,7 @@ import logoBlack from '../../assets/884e30d97f406d46d806b45565916678a69674e9.png
 export function Footer() {
   const { t } = useLanguage();
   const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const links = [
     { path: '/', label: t('nav.home') },
@@ -42,29 +43,33 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-[rgba(99,196,85,0.15)] bg-background overflow-hidden">
-      {/* Centered subtle background gradient */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/3 blur-3xl"
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.2, 0.3, 0.2],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+    <footer className={`relative border-t bg-background overflow-hidden ${isDark ? 'border-[rgba(99,196,85,0.15)]' : 'border-border/60'}`}>
+      {/* Centered subtle background gradient — dark mode only */}
+      {isDark && (
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/3 blur-3xl"
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      )}
 
-      {/* Animated grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(99,196,85,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(99,196,85,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      {/* Animated grid pattern overlay — dark mode only */}
+      {isDark && (
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,196,85,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(99,196,85,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      )}
 
-      {/* Floating particles */}
-      {[...Array(8)].map((_, i) => (
+      {/* Floating particles — dark mode only */}
+      {isDark && [...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute h-1 w-1 rounded-full bg-primary/20"
+          className="absolute h-1 w-1 rounded-full bg-primary/20 hidden md:block"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -84,18 +89,20 @@ export function Footer() {
       ))}
 
       {/* Decorative green accent bar - top */}
-      <motion.div 
-        className="absolute top-0 left-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        style={{ width: '100%', transformOrigin: 'center' }}
-      />
+      {isDark && (
+        <motion.div 
+          className="absolute top-0 left-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{ width: '100%', transformOrigin: 'center' }}
+        />
+      )}
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-[80px] pb-12 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-5 pt-16 pb-10 md:px-6 md:pt-[80px] md:pb-12 lg:px-10">
         {/* Main Footer Content - Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-9 md:gap-8 md:grid-cols-2 lg:grid-cols-[1.1fr_0.8fr_0.8fr_0.9fr] lg:gap-12">
           
           {/* Column 1: Logo, Tagline, Social */}
           <motion.div
@@ -184,14 +191,14 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="flex flex-col items-start md:pl-8 lg:pl-12"
+            className="flex flex-col items-start md:pl-8 lg:pl-4"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <h3 className="text-[0.625rem] font-bold uppercase tracking-[0.04em] text-primary">
+            <div className="flex items-center gap-2 mb-3 md:mb-5">
+              <h3 className="text-[0.6rem] md:text-[0.6rem] font-semibold uppercase tracking-[0.04em] text-primary/90">
                 {t('footer.quickLinks')}
               </h3>
               <motion.div 
-                className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"
+                className="h-px flex-1 bg-gradient-to-r from-primary/15 to-transparent hidden md:block"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -199,7 +206,7 @@ export function Footer() {
                 style={{ transformOrigin: 'left' }}
               />
             </div>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-2.5 lg:gap-3">
               {links.map((link, index) => (
                 <motion.li 
                   key={link.path}
@@ -210,7 +217,7 @@ export function Footer() {
                 >
                   <Link
                     to={link.path}
-                    className="group relative text-xs hover:text-primary transition-colors duration-300 inline-block"
+                    className="group relative text-xs leading-[1.6] hover:text-primary transition-colors duration-300 inline-block"
                     style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.75)' }}
                   >
                     <span className="relative z-10">{link.label}</span>
@@ -232,16 +239,16 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex flex-col items-start"
+            className="flex flex-col items-start lg:pl-2"
           >
             {/* Legal */}
-            <div className="mb-4">
-              <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-[0.625rem] font-bold uppercase tracking-[0.04em] text-primary">
+            <div className="mb-6 md:mb-6 lg:mb-8">
+              <div className="flex items-center gap-2 mb-3 md:mb-5">
+                <h3 className="text-[0.6rem] md:text-[0.6rem] font-semibold uppercase tracking-[0.04em] text-primary/90">
                   {t('footer.legal')}
                 </h3>
                 <motion.div 
-                  className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"
+                  className="h-px flex-1 bg-gradient-to-r from-primary/15 to-transparent hidden md:block"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
@@ -249,7 +256,7 @@ export function Footer() {
                   style={{ transformOrigin: 'left' }}
                 />
               </div>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-2.5 lg:gap-3">
                 {legalLinks.map((link, index) => (
                   <motion.li 
                     key={link.path}
@@ -260,7 +267,7 @@ export function Footer() {
                   >
                     <Link
                       to={link.path}
-                      className="group relative text-xs hover:text-primary transition-colors duration-300 inline-block"
+                      className="group relative text-xs leading-[1.6] hover:text-primary transition-colors duration-300 inline-block"
                       style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.75)' }}
                     >
                       <span className="relative z-10">{link.label}</span>
@@ -278,12 +285,12 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-[0.625rem] font-bold uppercase tracking-[0.04em] text-primary">
+              <div className="flex items-center gap-2 mb-3 md:mb-5">
+                <h3 className="text-[0.6rem] md:text-[0.6rem] font-semibold uppercase tracking-[0.04em] text-primary/90">
                   {t('footer.contact')}
                 </h3>
                 <motion.div 
-                  className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"
+                  className="h-px flex-1 bg-gradient-to-r from-primary/15 to-transparent hidden md:block"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
@@ -293,7 +300,7 @@ export function Footer() {
               </div>
               <motion.a 
                 href="mailto:support@lifyx.ca" 
-                className="group relative text-xs hover:text-primary transition-colors duration-300 inline-block"
+                className="group relative text-xs leading-[1.6] hover:text-primary transition-colors duration-300 inline-block"
                 style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.8)' }}
                 whileHover={{ x: 2 }}
               >
@@ -314,14 +321,14 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex flex-col items-start"
+            className="flex flex-col items-start mt-3 md:mt-0 pt-6 md:pt-0 border-t border-primary/10 md:border-t-0 lg:pl-4"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <h3 className="text-[0.625rem] font-bold uppercase tracking-[0.04em] text-primary">
+            <div className="flex items-center gap-2 mb-3 md:mb-5">
+              <h3 className="text-[0.6rem] md:text-[0.6rem] font-semibold uppercase tracking-[0.04em] text-primary/90">
                 {t('footer.cta.title')}
               </h3>
               <motion.div 
-                className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"
+                className="h-px flex-1 bg-gradient-to-r from-primary/15 to-transparent hidden md:block"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -330,13 +337,13 @@ export function Footer() {
               />
             </div>
             
-            <p className="text-xs mb-4 leading-relaxed" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.65)' }}>
+            <p className="text-xs mb-5 leading-[1.6]" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.65)' }}>
               {t('footer.cta.description')}
             </p>
 
-            <Link to="/contact">
+            <Link to="/contact" className="w-[90%] md:w-auto">
               <motion.button
-                className="group relative px-5 py-2.5 bg-primary/10 border border-primary/30 rounded-lg text-xs font-medium text-primary hover:bg-primary hover:text-background transition-all duration-300 overflow-hidden"
+                className="group relative w-full md:w-auto px-5 py-2.5 bg-primary/10 border border-primary/30 rounded-lg text-xs font-medium text-primary hover:bg-primary hover:text-white transition-all duration-300 overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -357,28 +364,29 @@ export function Footer() {
           </motion.div>
         </div>
 
-        {/* Decorative separator with animated dots */}
+        {/* Decorative separator — minimal on mobile */}
         <motion.div 
-          className="mt-8 mb-6 flex items-center justify-center gap-2"
+          className="mt-10 mb-6 flex items-center justify-center gap-2 lg:mt-14 lg:mb-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
           <motion.div 
-            className="h-px w-20 bg-gradient-to-r from-transparent via-primary/30 to-primary/30"
+            className="h-px w-20 bg-gradient-to-r from-transparent via-primary/15 to-primary/15"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.8 }}
           />
+          {/* Dots hidden on mobile for cleaner finish */}
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="h-0.5 w-0.5 rounded-full bg-primary/40"
+              className="h-0.5 w-0.5 rounded-full bg-primary/20 hidden md:block"
               animate={{
                 scale: [1, 1.5, 1],
-                opacity: [0.4, 1, 0.4],
+                opacity: [0.2, 0.5, 0.2],
               }}
               transition={{
                 duration: 2,
@@ -388,7 +396,7 @@ export function Footer() {
             />
           ))}
           <motion.div 
-            className="h-px w-20 bg-gradient-to-l from-transparent via-primary/30 to-primary/30"
+            className="h-px w-20 bg-gradient-to-l from-transparent via-primary/15 to-primary/15"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -398,19 +406,19 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <motion.div
-          className="pt-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-3"
+          className={`pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-3 ${isDark ? 'border-white/[0.06]' : 'border-border/50'}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <div className="text-[0.625rem]" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}>
+          <div className="text-[0.625rem] opacity-75" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}>
             {t('footer.copyright')}
           </div>
 
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-1.5 text-[0.625rem] transition-colors duration-300 relative"
+            className="group flex items-center gap-1.5 text-[0.625rem] font-light transition-colors duration-300 relative opacity-80 md:mr-0"
             style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.55)' }}
             whileHover={{ x: -2 }}
           >

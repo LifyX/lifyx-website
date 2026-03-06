@@ -40,7 +40,7 @@ export function ServicesPage() {
     <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/30 pt-[80px]" style={{ position: 'relative' }}>
       
       {/* Page-wide falling leaves */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {leaves.map((leaf, i) => (
           <div
             key={`leaf-${i}`}
@@ -180,7 +180,7 @@ export function ServicesPage() {
       </section>
 
       {/* 2. SERVICE DETAIL SLIDER + LIFECYCLE LINK (seamless) */}
-      <section className="py-16 md:py-[120px]">
+      <section className="py-16 md:py-[120px] pb-24 md:pb-[20vh]">
         <ServiceDetailSlider />
 
         {/* Lifecycle Link — flows directly after services */}
@@ -200,7 +200,7 @@ export function ServicesPage() {
               />
             </div>
 
-            <p className="text-xs md:text-sm font-mono tracking-[0.35em] uppercase text-primary/50 mb-6 md:mb-8">
+            <p className="text-sm md:text-base font-mono tracking-[0.35em] uppercase text-primary/70 mb-6 md:mb-8">
               {t('services.lifecycle_section.title')}
             </p>
 
@@ -208,14 +208,14 @@ export function ServicesPage() {
               to="/process"
               className="group inline-flex flex-col items-center gap-4 relative"
             >
-              <span className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground/80 group-hover:text-foreground transition-colors duration-500">
+              <span className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-500">
                 {t('services.lifecycle_section.btn')}
               </span>
 
               {/* Animated arrow + line */}
-              <span className="flex items-center gap-2 mt-1">
-                <span className="block h-px w-8 md:w-12 bg-primary/30 group-hover:w-16 md:group-hover:w-20 group-hover:bg-primary/70 transition-all duration-500 ease-out" />
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 ease-out" />
+              <span className="flex items-center gap-2 mt-2">
+                <span className="block h-px w-10 md:w-16 bg-primary/50 group-hover:w-20 md:group-hover:w-24 group-hover:bg-primary transition-all duration-500 ease-out" />
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-primary/60 group-hover:text-primary group-hover:translate-x-1.5 transition-all duration-300 ease-out" />
               </span>
             </Link>
           </motion.div>

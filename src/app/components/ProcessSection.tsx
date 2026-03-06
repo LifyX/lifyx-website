@@ -109,7 +109,7 @@ function PhaseCard({ phase, index }: { phase: LifecyclePhase; index: number }) {
 
 export function ProcessSection() {
   const { t } = useLanguage();
-  const targetRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -120,10 +120,7 @@ export function ProcessSection() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <section className="bg-neutral-950 relative md:h-[300vh]" style={{ position: 'relative' }}>
-      {/* Scroll Trigger Wrapper */}
-      <div ref={targetRef} className="absolute inset-0 pointer-events-none" style={{ position: 'absolute' }} />
-      
+    <section ref={targetRef} className="bg-neutral-950 relative md:h-[300vh]" style={{ position: 'relative' }}>
       {/* Mobile View (Vertical List) */}
       <div className="md:hidden py-24 px-6 relative z-10">
         <div className="mb-16">

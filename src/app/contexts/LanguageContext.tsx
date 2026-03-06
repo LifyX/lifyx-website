@@ -37,10 +37,10 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.contact': 'Contact',
     'footer.workingHours': 'Working Hours',
     'footer.workingHoursValue': 'Monday – Friday\n9:00 AM – 6:00 PM',
-    'footer.copyright': '© 2026 LifyX. Built with precision.',
+    'footer.copyright': '© 2026 LifyX. Engineered with precision. All rights reserved.',
     'footer.language': 'Language',
-    'footer.cta.title': 'Start Your Project Today',
-    'footer.cta.description': 'Ready to elevate your digital presence? Let\'s build something exceptional together.',
+    'footer.cta.title': 'Ready to build with clarity?',
+    'footer.cta.description': 'Let\'s create something engineered to grow.',
     'footer.cta.button': 'Get Started',
     
     // Legal

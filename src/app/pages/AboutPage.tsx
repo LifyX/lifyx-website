@@ -4,7 +4,7 @@ import { Target, TrendingUp, ShieldCheck, Zap, BarChart3, ArrowRight, Layout, Cp
 import { motion } from 'motion/react';
 import { Button } from '../components/ui/button';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import anaPhoto from '../../assets/34b2ba218c5f67b87e803146dfdf62ba3c1e3968.png';
+import anaPhoto from '../../assets/ebb5b69fa61218827934cd867a2634e8c5324b3b.png';
 import nisithPhoto from '../../assets/aced1777e6f8694d88997f7582798ac1cc55c8ef.png';
 
 export function AboutPage() {
@@ -17,7 +17,7 @@ export function AboutPage() {
       <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 px-6 lg:pt-48 lg:pb-32 flex flex-col items-center text-center">
         {/* Subtle grid background - more visible */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#63C45520_1px,transparent_1px),linear-gradient(to_bottom,#63C45520_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
-
+        
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
             initial={{ opacity: 0, y: 10 }}
@@ -204,11 +204,11 @@ export function AboutPage() {
             >
               <div className="p-6 md:p-10 flex flex-col h-full">
                 <div className="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                  <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border border-border/40 group-hover:border-primary/50 transition-colors shrink-0">
+                  <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border border-border/40 group-hover:border-primary/50 transition-colors shrink-0">
                     <ImageWithFallback
                       src={anaPhoto}
                       alt="Ana Zuluaga"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
                   </div>
                   <div>
@@ -235,11 +235,11 @@ export function AboutPage() {
             >
               <div className="p-6 md:p-10 flex flex-col h-full">
                 <div className="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                  <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border border-border/40 group-hover:border-primary/50 transition-colors shrink-0">
+                  <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border border-border/40 group-hover:border-primary/50 transition-colors shrink-0">
                     <ImageWithFallback
                       src={nisithPhoto}
                       alt="Nisith Jayalath"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
                   </div>
                   <div>
