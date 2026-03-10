@@ -86,8 +86,8 @@ export function Header() {
   };
 
   const handleNavClick = (path: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If we're already on this page, scroll to top
-    if (location.pathname === path || (path !== '/' && location.pathname.startsWith(path))) {
+    // If we're exactly on this page, scroll to top instead of navigating
+    if (location.pathname === path) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

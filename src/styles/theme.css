@@ -4,6 +4,7 @@
 html {
   background-color: #111315;
   color-scheme: dark;
+  position: relative;
   transition: background-color 300ms ease, color 300ms ease;
 }
 html.light {

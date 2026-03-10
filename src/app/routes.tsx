@@ -14,6 +14,7 @@ import { DataProtectionPage } from './pages/legal/DataProtectionPage';
 import { AcceptableUsePage } from './pages/legal/AcceptableUsePage';
 import { DisclaimerPage } from './pages/legal/DisclaimerPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { ComingSoonPage } from './pages/ComingSoonPage';
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       { path: 'about', Component: AboutPage },
       { path: 'services', Component: ServicesPage },
       { path: 'portfolio', Component: PortfolioPage },
+      { path: 'portfolio/coming-soon', Component: ComingSoonPage },
       { path: 'contact', Component: ContactPage },
       { path: 'faq', Component: FAQPage },
       { path: 'process', Component: ProcessPage },
