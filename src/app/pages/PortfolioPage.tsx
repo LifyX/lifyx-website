@@ -37,8 +37,8 @@ export function PortfolioPage() {
       category: "web",
       image: "https://images.unsplash.com/photo-1638799869566-b17fa794c4de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBiYXRocm9vbSUyMGx1eHVyeSUyMGludGVyaW9yfGVufDF8fHx8MTc3MTg3MTEyNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       description: t('portfolio.project3.desc'),
-      link: "#",
-      comingSoon: true
+      link: "https://capitanpoop.lifyx.ca/",
+      comingSoon: false
     },
   ];
 
@@ -171,13 +171,25 @@ export function PortfolioPage() {
                   <div className="flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                        <Link to={`/portfolio/coming-soon?project=${encodeURIComponent(project.title)}`} className="hover:text-primary transition-colors">
-                          {project.title}
-                        </Link>
+                        {project.comingSoon ? (
+                          <Link to={`/portfolio/coming-soon?project=${encodeURIComponent(project.title)}`} className="hover:text-primary transition-colors">
+                            {project.title}
+                          </Link>
+                        ) : (
+                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                            {project.title}
+                          </a>
+                        )}
                       </h3>
-                      <Link to={`/portfolio/coming-soon?project=${encodeURIComponent(project.title)}`} className="text-muted-foreground hover:text-foreground transition-colors">
-                        <ArrowUpRight className="w-5 h-5" />
-                      </Link>
+                      {project.comingSoon ? (
+                        <Link to={`/portfolio/coming-soon?project=${encodeURIComponent(project.title)}`} className="text-muted-foreground hover:text-foreground transition-colors">
+                          <ArrowUpRight className="w-5 h-5" />
+                        </Link>
+                      ) : (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                          <ArrowUpRight className="w-5 h-5" />
+                        </a>
+                      )}
                     </div>
                     
                     <p className="text-muted-foreground font-light mb-6 flex-grow leading-relaxed text-sm md:text-base">
