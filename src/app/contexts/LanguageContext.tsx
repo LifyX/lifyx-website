@@ -1487,7 +1487,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.projectType.unsure': 'Aún no estoy seguro',
     
     'contact.form.budget': 'Presupuesto estimado',
-    'contact.form.budget.range1': '$2,000 – $3,000',
+    'contact.form.budget.range1': '$1,000 – $3,000',
     'contact.form.budget.range2': '$3,000 – $5,000',
     'contact.form.budget.range3': '$5,000+',
     'contact.form.budget.discuss': 'Prefiero discutirlo',
