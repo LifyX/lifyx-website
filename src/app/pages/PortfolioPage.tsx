@@ -3,10 +3,10 @@ import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import capitanPoopLogo from 'figma:asset/2b7c7e01209ff2d4c80d1f9fe0f91e6b30731e2b.png';
-import magnoLoftImage from 'figma:asset/b619cde91ad85a8b9b8c7fd42f53908a0cea6362.png';
-import losAsadosLogo from 'figma:asset/0317080f99089df2b5a6e317d3c57784231215a2.png';
-import solarisLogo from 'figma:asset/c76beadbf6b72572b306185aa05f3e4ac73c8e54.png';
+import capitanPoopLogo from '../../assets/2b7c7e01209ff2d4c80d1f9fe0f91e6b30731e2b.png';
+import magnoLoftImage from '../../assets/b619cde91ad85a8b9b8c7fd42f53908a0cea6362.png';
+import losAsadosLogo from '../../assets/0317080f99089df2b5a6e317d3c57784231215a2.png';
+import solarisLogo from '../../assets/c76beadbf6b72572b306185aa05f3e4ac73c8e54.png';
 
 export function PortfolioPage() {
   const { t } = useLanguage();
