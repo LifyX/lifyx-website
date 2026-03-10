@@ -40,11 +40,11 @@ export function ServicesPage() {
     <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/30 pt-[80px]" style={{ position: 'relative' }}>
       
       {/* Page-wide falling leaves */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 hidden md:block">
         {leaves.map((leaf, i) => (
           <div
             key={`leaf-${i}`}
-            className="absolute hidden md:block"
+            className="absolute"
             style={{
               left: leaf.left,
               top: '-30px',

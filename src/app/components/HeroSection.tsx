@@ -55,9 +55,9 @@ export function HeroSection() {
 
       {/* Floating accent dots — dark mode only */}
       {isDark && (
-        <>
+        <div className="hidden md:contents">
           <div
-            className="absolute top-[18%] left-[12%] w-1.5 h-1.5 rounded-full bg-primary hidden lg:block"
+            className="absolute top-[18%] left-[12%] w-1.5 h-1.5 rounded-full bg-primary"
             style={{
               boxShadow: '0 0 8px var(--primary), 0 0 12px var(--primary)',
               opacity: 0.3,
@@ -65,7 +65,7 @@ export function HeroSection() {
             }}
           />
           <div
-            className="absolute top-[30%] right-[10%] w-2 h-2 rounded-full bg-primary hidden lg:block"
+            className="absolute top-[30%] right-[10%] w-2 h-2 rounded-full bg-primary"
             style={{
               boxShadow: '0 0 10px var(--primary), 0 0 15px var(--primary)',
               opacity: 0.3,
@@ -73,7 +73,7 @@ export function HeroSection() {
             }}
           />
           <div
-            className="absolute bottom-[25%] left-[8%] w-2.5 h-2.5 rounded-full bg-primary hidden lg:block"
+            className="absolute bottom-[25%] left-[8%] w-2.5 h-2.5 rounded-full bg-primary"
             style={{
               boxShadow: '0 0 12px var(--primary), 0 0 18px var(--primary)',
               opacity: 0.3,
@@ -81,7 +81,7 @@ export function HeroSection() {
             }}
           />
           <div
-            className="absolute bottom-[35%] right-[15%] w-1.5 h-1.5 rounded-full bg-primary hidden lg:block"
+            className="absolute bottom-[35%] right-[15%] w-1.5 h-1.5 rounded-full bg-primary"
             style={{
               boxShadow: '0 0 8px var(--primary), 0 0 12px var(--primary)',
               opacity: 0.3,
@@ -89,7 +89,7 @@ export function HeroSection() {
             }}
           />
           <div
-            className="absolute top-[60%] left-[22%] w-1 h-1 rounded-full bg-primary hidden lg:block"
+            className="absolute top-[60%] left-[22%] w-1 h-1 rounded-full bg-primary"
             style={{
               boxShadow: '0 0 6px var(--primary), 0 0 10px var(--primary)',
               opacity: 0.3,
@@ -97,14 +97,14 @@ export function HeroSection() {
             }}
           />
           <div
-            className="absolute top-[15%] right-[25%] w-1 h-1 rounded-full bg-primary hidden lg:block"
+            className="absolute top-[15%] right-[25%] w-1 h-1 rounded-full bg-primary"
             style={{
               boxShadow: '0 0 6px var(--primary), 0 0 10px var(--primary)',
               opacity: 0.3,
               animation: 'twinkle 2.7s ease-in-out 0.8s infinite both',
             }}
           />
-        </>
+        </div>
       )}
 
       {/* Vertical accent lines — slightly more visible in dark */}

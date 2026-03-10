@@ -32,12 +32,12 @@ export function Footer() {
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/lifyxdigital/',
+      href: 'https://www.instagram.com/lifyx.studio',
       icon: Instagram,
     },
     {
       name: 'Facebook',
-      href: 'https://www.facebook.com/people/LifyX/61587747907750/',
+      href: 'https://www.facebook.com/lifyx.studio',
       icon: Facebook,
     },
   ];
@@ -171,7 +171,8 @@ export function Footer() {
                     <Icon className="h-4 w-4" />
                     {/* Animated ring on hover */}
                     <motion.div
-                      className="absolute inset-0 rounded-full border border-primary/0"
+                      className="absolute inset-0 rounded-full border"
+                      style={{ borderColor: 'rgba(99,196,85,0)' }}
                       whileHover={{ 
                         scale: 1.5,
                         borderColor: 'rgba(99,196,85,0.3)',

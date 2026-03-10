@@ -4,14 +4,117 @@ import { ArrowRight, CheckCircle2, Globe, Layout, ShoppingCart, Calendar, Server
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { HeroSection } from '../components/HeroSection';
+import { useMemo } from 'react';
+
+// Generate randomized falling leaves configuration
+function generateLeaves(count: number, seed: number) {
+  let s = seed;
+  const rand = () => {
+    s = (s * 16807 + 0) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+
+  return Array.from({ length: count }, () => ({
+    left: `${rand() * 100}%`,
+    size: 10 + rand() * 14,
+    duration: 5 + rand() * 5,
+    delay: rand() * 8,
+    swayAmount: 30 + rand() * 60,
+    opacity: 0.15 + rand() * 0.25,
+  }));
+}
 
 export function HomePage() {
   const { t } = useLanguage();
+  const leaves = useMemo(() => generateLeaves(9, 42), []);
   
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden" style={{ position: 'relative' }}>
       {/* Animated Fixed Background Pattern */}
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      {/* Mobile-only falling leaves */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 md:hidden">
+        {leaves.map((leaf, i) => (
+          <div
+            key={`leaf-${i}`}
+            className="absolute"
+            style={{
+              left: leaf.left,
+              top: '-30px',
+              animation: `homeLeafFall ${leaf.duration}s linear ${leaf.delay}s infinite`,
+              ['--sway' as string]: `${leaf.swayAmount}px`,
+            }}
+          >
+            <svg
+              width={leaf.size}
+              height={leaf.size}
+              viewBox="0 0 24 24"
+              fill="none"
+              style={{
+                animation: `homeLeafSpin ${leaf.duration * 0.8}s linear ${leaf.delay}s infinite`,
+                filter: `drop-shadow(0 0 6px var(--primary)) drop-shadow(0 0 12px var(--primary))`,
+                opacity: 0,
+              }}
+            >
+              <path
+                d="M12 2C6.5 6.5 4 11 4 15c0 3.5 2.5 6 6 7 .5.15 1 .2 1.5.2h1c.5 0 1-.05 1.5-.2 3.5-1 6-3.5 6-7 0-4-2.5-8.5-8-13z"
+                fill="var(--primary)"
+                fillOpacity={leaf.opacity}
+              />
+              <path
+                d="M12 2v20M12 8c-2 2-3.5 4-4 6M12 12c2 1.5 3.5 3 4 5"
+                stroke="var(--primary)"
+                strokeOpacity={leaf.opacity * 0.6}
+                strokeWidth="0.5"
+                fill="none"
+              />
+            </svg>
+          </div>
+        ))}
+      </div>
+
+      {/* Falling leaves keyframes */}
+      <style>{`
+        @keyframes homeLeafFall {
+          0% {
+            transform: translateY(-30px) translateX(0);
+            opacity: 0;
+          }
+          3% {
+            opacity: 1;
+          }
+          40% {
+            transform: translateY(calc(40vh)) translateX(var(--sway));
+            opacity: 0.9;
+          }
+          70% {
+            transform: translateY(calc(70vh)) translateX(calc(var(--sway) * -0.3));
+            opacity: 0.5;
+          }
+          100% {
+            transform: translateY(calc(100vh + 30px)) translateX(calc(var(--sway) * 0.4));
+            opacity: 0;
+          }
+        }
+
+        @keyframes homeLeafSpin {
+          0% {
+            transform: rotate(0deg);
+            opacity: 0;
+          }
+          8% {
+            opacity: 1;
+          }
+          85% {
+            opacity: 0.3;
+          }
+          100% {
+            transform: rotate(360deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
 
       {/* 1. HERO SECTION */}
       <HeroSection />
