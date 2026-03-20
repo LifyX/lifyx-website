@@ -19,7 +19,7 @@ export function PortfolioPage() {
       category: "web",
       image: magnoLoftImage,
       description: t('portfolio.project1.desc'),
-      link: "solariscartagena.lifyx.ca",
+      link: "https://solariscartagena.lifyx.ca/",
       comingSoon: false
     },
     {
@@ -28,7 +28,7 @@ export function PortfolioPage() {
       category: "web",
       image: "https://images.unsplash.com/photo-1765036741158-5a1698974257?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxCQlElMjBjaGFyY29hbCUyMGdyaWxsJTIwY29va2luZyUyMG1lYXR8ZW58MXx8fHwxNzcyNDkwNzY4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       description: t('portfolio.project2.desc'),
-      link: "losasadosderuben.lifyx.ca",
+      link: "https://losasadosderuben.lifyx.ca/",
       comingSoon: false
     },
     {
@@ -113,9 +113,14 @@ export function PortfolioPage() {
                   {t('portfolio.featured')}
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6 leading-tight">
-                  <Link to={`/portfolio/coming-soon?project=${encodeURIComponent(projects[0].title)}`} className="hover:text-primary transition-colors">
+                  <a
+                    href={projects[0].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors"
+                  >
                     {projects[0].title}
-                  </Link>
+                  </a>
                 </h2>
                 <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-8 font-light leading-relaxed">
                   {projects[0].description}
@@ -123,9 +128,15 @@ export function PortfolioPage() {
                 
                 {/* Links */}
                 <div className="flex items-center gap-8">
-                  <Link to={`/portfolio/coming-soon?project=${encodeURIComponent(projects[0].title)}`} className="flex items-center gap-2 text-foreground hover:text-primary transition-colors uppercase tracking-wider text-xs font-bold group/link">
-                    {t('portfolio.viewLive')} <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                  </Link>
+                  <a
+                    href={projects[0].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-foreground hover:text-primary transition-colors uppercase tracking-wider text-xs font-bold group/link"
+                  >
+                    {t('portfolio.viewLive')}
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                  </a>
                 </div>
               </div>
             </div>
