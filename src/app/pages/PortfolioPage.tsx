@@ -19,7 +19,7 @@ export function PortfolioPage() {
       category: "web",
       image: magnoLoftImage,
       description: t('portfolio.project1.desc'),
-      link: "#",
+      link: "solariscartagena.lifyx.ca",
       comingSoon: true
     },
     {
@@ -28,7 +28,7 @@ export function PortfolioPage() {
       category: "web",
       image: "https://images.unsplash.com/photo-1765036741158-5a1698974257?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxCQlElMjBjaGFyY29hbCUyMGdyaWxsJTIwY29va2luZyUyMG1lYXR8ZW58MXx8fHwxNzcyNDkwNzY4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       description: t('portfolio.project2.desc'),
-      link: "https://losasadosderuben.lifyx.ca/",
+      link: "losasadosderuben.lifyx.ca",
       comingSoon: false
     },
     {

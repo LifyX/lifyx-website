@@ -24,7 +24,6 @@ export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     businessName: '',
@@ -65,7 +64,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         access_key: "28fc5e68-92e0-48f1-8845-eb06e55c2e50",
         subject: "New LifyX Website Inquiry",
         from_name: "LifyX Website",
-
         fullName: formData.fullName,
         businessName: formData.businessName,
         email: formData.email,
