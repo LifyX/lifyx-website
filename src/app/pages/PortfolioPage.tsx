@@ -20,7 +20,7 @@ export function PortfolioPage() {
       image: magnoLoftImage,
       description: t('portfolio.project1.desc'),
       link: "solariscartagena.lifyx.ca",
-      comingSoon: true
+      comingSoon: false
     },
     {
       id: 2,
