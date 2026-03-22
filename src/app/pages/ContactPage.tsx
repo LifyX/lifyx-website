@@ -159,7 +159,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         value={formData.fullName}
                         onChange={handleChange}
                         className="h-12 border-zinc-400 dark:border-white/10 bg-white dark:bg-white/5 px-4 text-base focus:border-primary/50 focus:ring-primary/20"
-                        placeholder="John Doe"
+                        placeholder="Ana Zuluaga"
                       />
                     </div>
                     <div className="space-y-2">
@@ -176,7 +176,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         value={formData.businessName}
                         onChange={handleChange}
                         className="h-12 border-zinc-400 dark:border-white/10 bg-white dark:bg-white/5 px-4 text-base focus:border-primary/50 focus:ring-primary/20"
-                        placeholder="Acme Inc."
+                        placeholder="LIFYX"
                       />
                     </div>
                   </div>
@@ -197,7 +197,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         value={formData.email}
                         onChange={handleChange}
                         className="h-12 border-zinc-400 dark:border-white/10 bg-white dark:bg-white/5 px-4 text-base focus:border-primary/50 focus:ring-primary/20"
-                        placeholder="john@example.com"
+                        placeholder="nisith@example.com"
                       />
                     </div>
                     <div className="space-y-2">
@@ -213,7 +213,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         value={formData.website}
                         onChange={handleChange}
                         className="h-12 border-zinc-400 dark:border-white/10 bg-white dark:bg-white/5 px-4 text-base focus:border-primary/50 focus:ring-primary/20"
-                        placeholder="https://example.com"
+                        placeholder="https://lifyx.ca"
                       />
                     </div>
                   </div>
